@@ -18,6 +18,7 @@ namespace ConsoleApplication11
                                              XmlDiffOptions.IgnoreNamespaces |
                                              XmlDiffOptions.IgnorePrefixes);
             XmlReader sourceReader = new XmlReader(originalSource);
+            XmlReader changedReader = new XmlReader(changedSource);
             bool bIdentical = xmldiff.Compare(;
             diffGramWriter.Close();
         }
