@@ -1,0 +1,1298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ABB.SrcML.VisualStudio</name>
+    </assembly>
+    <members>
+        <member name="T:ABB.SrcML.VisualStudio.AbstractMonitoringService">
+            <summary>
+            Abstract class for monitoring services. This contains common functionality and operations for making monitors within Visual Studio.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.AbstractMonitoringService.DEFAULT_SAVE_INTERVAL">
+            <summary>
+            Default interval for the save timer in milliseconds
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.#ctor(ABB.SrcML.VisualStudio.SrcMLServicePackage,ABB.VisualStudio.ITaskManagerService)">
+            <summary>
+            Create a new abstract monitoring service
+            </summary>
+            <param name="serviceProvider">The container where this service will be sited</param>
+            <param name="taskManagerService">The task manager service for executing tasks</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StartMonitoring">
+            <summary>
+            Starts monitoring
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StopMonitoring">
+            <summary>
+            Stops monitoring
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.OnMonitoringStarted(System.EventArgs)">
+            <summary>
+            Executed when <see cref="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.MonitoringStarted"/> is raised
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.OnMonitoringStopped(System.EventArgs)">
+            <summary>
+            Executed when <see cref="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.MonitoringStopped"/> is raised
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.OnUpdateCompleted(System.EventArgs)">
+            <summary>
+            Executed when <see cref="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.UpdateCompleted"/> is raised
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.OnUpdateStarted(System.EventArgs)">
+            <summary>
+            Executed when <see cref="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.UpdateStarted"/> is raised
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.Save">
+            <summary>
+            Saves the monitor state
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.Setup">
+            <summary>
+            Sets up the monitor prior to monitoring
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.Update">
+            <summary>
+            Updates the monitor
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.UpdateImpl">
+            <summary>
+            Implementation method for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.Update"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StartMonitoringImpl">
+            <summary>
+            Implementation method for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StartMonitoring"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StopMonitoringImpl">
+            <summary>
+            Implementation method for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StopMonitoring"/>
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.MonitoringStarted">
+            <summary>
+            The monitoring started event
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.MonitoringStopped">
+            <summary>
+            The monitoring stopped event
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.UpdateStarted">
+            <summary>
+            The update started event
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.UpdateCompleted">
+            <summary>
+            The update completed event
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.AbstractMonitoringService.IsMonitoring">
+            <summary>
+            True if this monitor is currently monitoring; false if not
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.AbstractMonitoringService.IsUpdating">
+            <summary>
+            True if this monitor is currently updating; false if not
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.AbstractMonitoringService.SaveInterval">
+            <summary>
+            The interval at which to save state in seconds.
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.AbstractMonitoringService.SaveTimer">
+            <summary>
+            The timer for periodically saving state
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.AbstractMonitoringService.ServiceProvider">
+            <summary>
+            The container for this service
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.AbstractMonitoringService.TaskManager">
+            <summary>
+            The task manager
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.AbstractMonitoringService.GlobalTaskFactory">
+            <summary>
+            The task factory for executing tasks
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.AbstractMonitoringService.GlobalScheduler">
+            <summary>
+            The task scheduler for scheduling tasks
+            </summary>
+        </member>
+        <member name="T:ABB.VisualStudio.GuidList">
+            <summary>
+            All the service GUIDs available in this package
+            </summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.SrcMLServicePackageId">
+            <summary>SrcML service package GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.guidSrcMLServiceCmdSetString">
+            <summary>SrcML service package command ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.ISrcMLGlobalServiceId">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.ISrcMLGlobalService"/> ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.SSrcMLGlobalServiceId">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.SSrcMLGlobalService"/> ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.ISrcMLDataServiceId">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.ISrcMLDataService"/> ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.SSrcMLDataServiceId">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.SSrcMLDataService"/> ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.ITaskManagerServiceId">
+            <summary><see cref="T:ABB.VisualStudio.ITaskManagerService"/> ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.STaskManagerServiceId">
+            <summary><see cref="T:ABB.VisualStudio.STaskManagerService"/> ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.IWorkingSetRegistrarServiceId">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService"/> ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.SWorkingSetRegistrarServiceId">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.SWorkingSetRegistrarService"/> ID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.guidSrcMLServiceCmdSet">
+            <summary>SrcML service package command GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.SrcMLServicePackageGuid">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.SrcMLServicePackage"/> GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.ISrcMLGlobalServiceGuid">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.ISrcMLGlobalService"/> GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.SSrcMLGlobalServiceGuid">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.SSrcMLGlobalService"/> GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.ISrcMLDataServiceGuid">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.ISrcMLDataService"/> GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.SSrcMLDataServiceGuid">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.SSrcMLDataService"/> GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.ITaskManagerServiceGuid">
+            <summary><see cref="T:ABB.VisualStudio.ITaskManagerService"/> GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.STaskManagerServiceGuid">
+            <summary><see cref="T:ABB.VisualStudio.STaskManagerService"/> GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.IWorkingSetRegistrarServiceGuid">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService"/> GUID</summary>
+        </member>
+        <member name="F:ABB.VisualStudio.GuidList.SWorkingSetRegistrarServiceGuid">
+            <summary><see cref="T:ABB.SrcML.VisualStudio.SWorkingSetRegistrarService"/> GUID</summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.HelperFunctions">
+            <summary>
+            This class is used to expose some utility functions used in this project.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.HelperFunctions.WriteOnOutputWindow(System.IServiceProvider,System.String)">
+            <summary>
+            This function is used to write a string on the Output window of Visual Studio.
+            </summary>
+            <param name="provider">The service provider to query for SVsOutputWindow</param>
+            <param name="text">The text to write</param>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.ISrcMLDataService">
+            <summary>
+            Provides data services based on ABB.SrcML.Data to Visual Studio client
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLDataService.FileProcessed">
+            <summary>
+            Raised when a file changed is processed
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLDataService.UpdateStarted">
+            <summary>
+            Raised when an update is started
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLDataService.UpdateCompleted">
+            <summary>
+            Raised when an update is completed
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLDataService.MonitoringStarted">
+            <summary>
+            Raised when monitoring is started
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLDataService.MonitoringStopped">
+            <summary>
+            Raised when monitoring is stopped
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.ISrcMLDataService.CurrentWorkingSet">
+            <summary>
+            The working set for the current solution
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.ISrcMLDataService.IsMonitoring">
+            <summary>
+            True if the service is currently monitoring; false otherwise (<see cref="E:ABB.SrcML.VisualStudio.ISrcMLDataService.MonitoringStarted"/> will be called before
+            this is set to true, and <see cref="E:ABB.SrcML.VisualStudio.ISrcMLDataService.MonitoringStopped"/> will be called when it is set to false.
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.ISrcMLDataService.IsUpdating">
+            <summary>
+            True if the service is currently updating; false otherwise (<see cref="E:ABB.SrcML.VisualStudio.ISrcMLDataService.UpdateStarted"/> will be called before
+            this is set to true, and <see cref="E:ABB.SrcML.VisualStudio.ISrcMLDataService.UpdateCompleted"/> will be called when it is set to false.
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.SSrcMLDataService">
+            <summary>
+            Service interface for <see cref="T:ABB.SrcML.VisualStudio.ISrcMLDataService"/>
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.ISrcMLGlobalService">
+            <summary>
+            This is the interface that will be implemented by the global service exposed by the package
+            defined in ABB.SrcML.VisualStudio.SrcMLService. Notice that we have to define this interface
+            as COM visible so that it will be possible to query for it from the native version of
+            IServiceProvider.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.AddDirectoryToMonitor(System.String)">
+            <summary>
+            Add a directory to <see cref="P:ABB.SrcML.VisualStudio.ISrcMLGlobalService.MonitoredDirectories"/>
+            </summary>
+            <param name="pathToDirectory">The directory path to start monitoring</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.GetXElementForSourceFile(System.String)">
+            <summary>
+            Gets the unit XElement for the given
+            <paramref name="sourceFilePath"/></summary>
+            <param name="sourceFilePath">The path to get a unit XElement for</param>
+            <returns>A unit XElement for
+            <paramref name="sourceFilePath"/></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.RemoveDirectoryFromMonitor(System.String)">
+            <summary>
+            Remove a directory from <see cref="P:ABB.SrcML.VisualStudio.ISrcMLGlobalService.MonitoredDirectories"/>
+            </summary>
+            <param name="pathToDirectory">The directory to stop monitoring</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.Reset">
+            <summary>
+            Tells the srcML service to delete all of the data for this solution the next time it is opened
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.StartMonitoring">
+            <summary>
+            Start monitoring the current solution
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.StopMonitoring">
+            <summary>
+            Stop monitoring the current solution
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLGlobalService.DirectoryAdded">
+            <summary>
+            Even to indicate that a directory has been added to the file monitor.
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLGlobalService.DirectoryRemoved">
+            <summary>
+            Event to indicate that a directory has been removed from the file monitor
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLGlobalService.MonitoringStopped">
+            <summary>
+            Event to indicate that <see cref="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.StopMonitoring"/> has been called
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.ISrcMLGlobalService.SourceFileChanged">
+            <summary>
+            Event to indicate that a source file has changed
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.ISrcMLGlobalService.MonitoredDirectories">
+            <summary>
+            Collection of directories monitored by the service. The list of directories is persisted
+            for each solution. Modify the collection by calling
+            <see cref="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.AddDirectoryToMonitor(System.String)"/> and
+            <see cref="M:ABB.SrcML.VisualStudio.ISrcMLGlobalService.RemoveDirectoryFromMonitor(System.String)"/>
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.ISrcMLGlobalService.SaveInterval">
+            <summary>
+            The interval at which the service persists its data to disk (in seconds).
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.ISrcMLGlobalService.ScanInterval">
+            <summary>
+            The interval at which the service scans <see cref="P:ABB.SrcML.VisualStudio.ISrcMLGlobalService.MonitoredDirectories"/>
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.SSrcMLGlobalService">
+             <summary>
+             The goal of this interface is actually just to define a Type (or Guid from the native
+             client's point of view) that will be used to identify the service. In theory, we could use
+             the interface defined above, but it is a good practice to always define a new type as the
+             service's identifier because a service can expose different interfaces.
+            
+             It is registered at: HKEY_USERS\S-1-5-21-1472859983-109138142-169162935-138973\Software\Microsoft\VisualStudio\11.0Exp_Config\Services\{fafafdfb-60f3-47e4-b38c-1bae05b44241}
+             </summary>
+        </member>
+        <member name="T:ABB.VisualStudio.ITaskManagerService">
+            <summary>
+            This is the interface that will be implemented by the global service exposed by the package
+            defined in ABB.VisualStudio.SrcMLService. Notice that we have to define this interface
+            as COM visible so that it will be possible to query for it from the native version of
+            IServiceProvider.
+            </summary>
+        </member>
+        <member name="T:ABB.VisualStudio.STaskManagerService">
+             <summary>
+             The goal of this interface is actually just to define a Type (or Guid from the native
+             client's point of view) that will be used to identify the service. In theory, we could use
+             the interface defined above, but it is a good practice to always define a new type as the
+             service's identifier because a service can expose different interfaces.
+            
+             It is registered at: HKEY_USERS\S-1-5-21-1472859983-109138142-169162935-138973\Software\Microsoft\VisualStudio\11.0Exp_Config\Services\{4B917BC0-C42E-447C-B732-6A675EDF4EB9}
+             </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService">
+            <summary>
+            The working set registrar service lets 3rd party developers provide <see cref="T:ABB.SrcML.Data.AbstractWorkingSet"/> implementations
+            for the <see cref="T:ABB.SrcML.VisualStudio.SrcMLDataService"/>. You register a working set implementation by writing an <see cref="T:ABB.SrcML.Data.AbstractWorkingSetFactory"/>
+            and then calling <see cref="M:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService.RegisterWorkingSetFactory(ABB.SrcML.Data.AbstractWorkingSetFactory)"/> in <see cref="M:Microsoft.VisualStudio.Shell.Package.Initialize"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService.RegisterWorkingSetFactory(ABB.SrcML.Data.AbstractWorkingSetFactory)">
+            <summary>
+            Registers a new working set factory and makes it the default
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService.Default">
+            <summary>
+            The default working set factory
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService.WorkingSetFactories">
+            <summary>
+            Registered working set factories
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService.WorkingSetFactoryAdded">
+            <summary>
+            This event will be raised whenever a working set factory is added to <see cref="P:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService.WorkingSetFactories"/>
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.SWorkingSetRegistrarService">
+            <summary>
+            Service interface for <see cref="T:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService"/>
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.SolutionChangeEventListener">
+            <summary>
+            Adapted from https://github.com/shanselman/RestoreAfterReloadVSIX
+            IVsSolutionEvents: Listening interface that monitors any notifications of changes to the solution.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SolutionChangeEventListener.solution">
+            <summary>
+            IVsSolution: Provides top-level manipulation or maintenance of the solution.
+            solutionEventsCookie is used in registering/unregistering events.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.#ctor">
+            <summary>
+            Constructor.
+            Register Solution events.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.InitNullEvents">
+            <summary>
+            Initialize null events.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnAfterCloseSolution(System.Object)">
+            <summary>
+            Notifies listening clients that a solution has been closed.
+            </summary>
+            <param name="pUnkReserved"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnAfterLoadProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy)">
+            <summary>
+            Notifies listening clients that the project has been loaded.
+            </summary>
+            <param name="pStubHierarchy"></param>
+            <param name="pRealHierarchy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnAfterOpenProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.Int32)">
+            <summary>
+            Notifies listening clients that the project has been opened.
+            </summary>
+            <param name="pHierarchy"></param>
+            <param name="fAdded"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnAfterOpenSolution(System.Object,System.Int32)">
+            <summary>
+            Notifies listening clients that the solution has been opened.
+            </summary>
+            <param name="pUnkReserved"></param>
+            <param name="fNewSolution"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnBeforeCloseProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.Int32)">
+            <summary>
+            Notifies listening clients that the project is about to be closed.
+            </summary>
+            <param name="pHierarchy"></param>
+            <param name="fRemoved"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnBeforeCloseSolution(System.Object)">
+            <summary>
+            Notifies listening clients that the solution is about to be closed.
+            </summary>
+            <param name="pUnkReserved"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnBeforeUnloadProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy)">
+            <summary>
+            Notifies listening clients that the project is about to be unloaded.
+            </summary>
+            <param name="pRealHierarchy"></param>
+            <param name="pStubHierarchy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnQueryCloseProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.Int32,System.Int32@)">
+            <summary>
+            Queries listening clients as to whether the project can be closed.
+            </summary>
+            <param name="pHierarchy"></param>
+            <param name="fRemoving"></param>
+            <param name="pfCancel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnQueryCloseSolution(System.Object,System.Int32@)">
+            <summary>
+            Queries listening clients as to whether the solution can be closed.
+            </summary>
+            <param name="pUnkReserved"></param>
+            <param name="pfCancel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Microsoft#VisualStudio#Shell#Interop#IVsSolutionEvents#OnQueryUnloadProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.Int32@)">
+            <summary>
+            Queries listening clients as to whether the project can be unloaded.
+            </summary>
+            <param name="pRealHierarchy"></param>
+            <param name="pfCancel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SolutionChangeEventListener.Dispose">
+            <summary>
+            Dispose.
+            Unregister Solution events.
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.SolutionChangeEventListener.OnQueryUnloadProject">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.#ctor(EnvDTE.Solution,System.Double,System.Threading.Tasks.TaskScheduler,System.String)">
+            <summary>
+            Creates a new source monitor
+            </summary>
+            <param name="solution">The solution to monitor</param>
+            <param name="foldersToMonitor">A list of folders to monitor</param>
+            <param name="scanInterval">The interval at which to scan the folders (in
+            seconds) </param>
+            <param name="baseDirectory">The base directory for this monitor</param>
+            <param name="defaultArchive">The default archive to route files to</param>
+            <param name="otherArchives">Other archives to route files to</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.#ctor(EnvDTE.Solution,System.Double,System.Threading.Tasks.TaskScheduler,System.String,ABB.SrcML.AbstractArchive,ABB.SrcML.SrcMLArchive,ABB.SrcML.AbstractArchive[])">
+            <summary>
+            Creates a new source monitor
+            </summary>
+            <param name="solution">The solution to monitor</param>
+            <param name="foldersToMonitor">A list of folders to monitor</param>
+            <param name="scanInterval">The interval at which to scan the folders (in
+            seconds) </param>
+            <param name="baseDirectory">The base directory for this monitor</param>
+            <param name="defaultArchive">The default archive to route files to</param>
+            <param name="otherArchives">Other archives to route files to</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.#ctor(EnvDTE.Solution,System.String,ABB.SrcML.AbstractArchive,ABB.SrcML.SrcMLArchive,ABB.SrcML.AbstractArchive[])">
+            <summary>
+            Creates a new source monitor
+            </summary>
+            <param name="solution">The solution to monitor</param>
+            <param name="foldersToMonitor">A list of folders to monitor</param>
+            <param name="baseDirectory">The base directory for this monitor</param>
+            <param name="defaultArchive">The default archive to route files to</param>
+            <param name="otherArchives">Other archives to route files to</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.GetSolutionFiles(EnvDTE.Solution)">
+            <summary>
+            Gets a list of all the files from the solution
+            </summary>
+            <param name="solution">The solution to get the files from</param>
+            <returns>A list of the solution files</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.GetSolutionPaths(EnvDTE.Solution)">
+            <summary>
+            Gets the set of full directory paths that contains the
+            <paramref name="solution"/></summary>
+            <param name="solution">The solution</param>
+            <returns>The set of absolute paths to the directory that contains the solution's files</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.AddSolutionDirectories">
+            <summary>
+            Adds the directories for the <see cref="P:ABB.SrcML.VisualStudio.SourceMonitor.MonitoredSolution">monitored solution</see>
+            to <see cref="P:ABB.SrcML.DirectoryScanningMonitor.MonitoredDirectories"/>.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.OnAfterAttributeChange(System.UInt32,System.UInt32)">
+            <summary>
+            Update the
+            <paramref name="docCookie">referenced file</paramref>
+            <see cref="M:ABB.SrcML.DirectoryScanningMonitor.IsMonitoringFile(System.String)">if it is being
+            monitored</see>
+            <paramref name="docCookie">file</paramref> if the
+            <paramref name="grfAttribs">changed attribute</paramref> is
+            <see cref="F:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB.RDTA_DocDataReloaded"/>.
+            </summary>
+            <param name="docCookie">The cookie for the changed document</param>
+            <param name="grfAttribs">The document attributes</param>
+            <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK"/>. If it fails,
+            it returns an error code.</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.OnAfterDocumentWindowHide(System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame)">
+            <summary>
+            Ignored
+            </summary>
+            <param name="docCookie">Unused</param>
+            <param name="pFrame">Unused</param>
+            <returns>returns see cref="VSConstants.S_OK"/>.</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.OnAfterFirstDocumentLock(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+             <summary>
+             Ignored.
+             </summary>
+             <param name="docCookie">Unused</param>
+             <param name="dwRDTLockType">Unused</param>
+             <param name="dwReadLocksRemaining">Unused</param>
+             <param name="dwEditLocksRemaining">Unused</param>
+            <returns>returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK"/>.</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.OnAfterSave(System.UInt32)">
+            <summary>
+            Respond to visual studio file saves by updating the monitor if the file
+            <see cref="M:ABB.SrcML.DirectoryScanningMonitor.IsMonitoringFile(System.String)">is being monitored</see>
+            </summary>
+            <param name="docCookie"></param>
+            <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK"/>. If it fails,
+            it returns an error code.</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.OnBeforeDocumentWindowShow(System.UInt32,System.Int32,Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame)">
+            <summary>
+            Ignored.
+            </summary>
+            <param name="docCookie">Unused</param>
+            <param name="fFirstShow">Unused</param>
+            <param name="pFrame">Unused</param>
+            <returns>returns see cref="VSConstants.S_OK"/>.</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.OnBeforeLastDocumentUnlock(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Ignored.
+            </summary>
+            <param name="docCookie">Unused</param>
+            <param name="dwRDTLockType">Unused</param>
+            <param name="dwReadLocksRemaining">Unused</param>
+            <param name="dwEditLocksRemaining">Unused</param>
+            <returns>returns see cref="VSConstants.S_OK"/>.</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.StartMonitoring">
+            <summary>
+            Subscribe to the visual studio <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable"/> and then
+            <see cref="M:ABB.SrcML.DirectoryScanningMonitor.StartMonitoring">start monitoring the
+            directories</see>.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.StopMonitoring">
+            <summary>
+            Unsubscribe from the <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable"/> and then
+            <see cref="M:ABB.SrcML.DirectoryScanningMonitor.StopMonitoring">stop monitoring the
+            directories.</see>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.Dispose(System.Boolean)">
+            <summary>
+            Dispose of this source monitor
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.SubscribeToEvents">
+            <summary>
+            Subscribe to the running document table events
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.UnsubscribeFromEvents">
+            <summary>
+            Unsubscribe from the running document table events
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SourceMonitor.UpdateVisualStudioDocument(System.UInt32)">
+            <summary>
+            Update the visual studio document referred to by
+            <paramref name="docCookie"/></summary>
+            <param name="docCookie">The identifier for the visula studio document</param>
+            <returns>The <see cref="T:Microsoft.VisualStudio.VSConstants"/> indicating whether or not the document was
+            found</returns>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.SourceMonitor.MonitoredSolution">
+            <summary>
+            The solution being monitored
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.SrcMLDataService">
+            <summary>
+            The default implementation for <see cref="T:ABB.SrcML.VisualStudio.ISrcMLDataService"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLDataService.#ctor(System.IServiceProvider)">
+            <summary>
+            Creates a new data service object
+            </summary>
+            <param name="serviceProvider">The service provider where this service is sited</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLDataService.OnFileProcessed(ABB.SrcML.FileEventRaisedArgs)">
+            <summary>
+            Raises the file processed event
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLDataService.OnUpdateStarted(System.EventArgs)">
+            <summary>
+            Raises the update started event
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLDataService.OnUpdateCompleted(System.EventArgs)">
+            <summary>
+            Raises the update completed event
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLDataService.OnMonitoringStarted(System.EventArgs)">
+            <summary>
+            Raises the monitoring started event
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLDataService.OnMonitoringStopped(System.EventArgs)">
+            <summary>
+            Raises the monitoring stopped event
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.SrcMLDataService.CurrentWorkingSet">
+            <summary>
+            The current working set object
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.SrcMLDataService.MonitoringStarted">
+            <summary>
+            Raised when monitoring is started
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.SrcMLDataService.MonitoringStopped">
+            <summary>
+            Raised when monitoring is stopped
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.SrcMLDataService.UpdateStarted">
+            <summary>
+            Raised when an update is started
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.SrcMLDataService.UpdateCompleted">
+            <summary>
+            Raised when an update is complete
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.SrcMLDataService.FileProcessed">
+            <summary>
+            Raised when a file change is processed
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.SrcMLDataService.IsMonitoring">
+            <summary>
+            If true, then <see cref="E:ABB.SrcML.VisualStudio.SrcMLDataService.MonitoringStarted"/> has been raised and the service is currently monitoring the solution.
+            If false, then the service is not currently monitoring.
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.SrcMLDataService.IsUpdating">
+            <summary>
+            If true, then <see cref="E:ABB.SrcML.VisualStudio.SrcMLDataService.UpdateStarted"/> has been raised and the service is currently updating.
+            If false, then the service is not currently updating.
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.SrcMLGlobalService">
+            <summary>
+            Step 4: Implement the global service class. This is the class that implements the global
+            service. All it needs to do is to implement the interfaces exposed by this service (in this
+            case ISrcMLGlobalService). This class also needs to implement the SSrcMLGlobalService
+            interface in order to notify the package that it is actually implementing this service.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLGlobalService.srcMLArchivesFolderString">
+            <summary>
+            The folder name of storing srcML archives.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLGlobalService.serviceProvider">
+            <summary>
+            Store in this variable the service provider that will be used to query for other
+            services.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLGlobalService.SrcMLServiceDirectory">
+            <summary>
+            The path of SrcML.NET Service VS extension.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLGlobalService.statusBar">
+            <summary>
+            Status bar service.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.#ctor(System.IServiceProvider,System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="sp"></param>
+            <param name="extensionDirectory"></param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.GetXElementForSourceFile(System.String)">
+            <summary>
+            Gets the XElement for the specified source file.
+            </summary>
+            <param name="sourceFilePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.StartMonitoring(System.Boolean,System.String)">
+            <summary>
+            SrcML service starts to monitor the opened solution.
+            </summary>
+            <param name="srcMLArchiveDirectory"></param>
+            <param name="shouldReset"></param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.StartMonitoring">
+            <summary>
+            SrcML service starts to monitor the opened solution.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.StopMonitoring">
+            <summary>
+            SrcML service stops monitoring the opened solution.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.GetSrcMLArchiveFolder(EnvDTE.Solution)">
+            <summary>
+            Generate the folder path for storing srcML files. (For all the following four methods.)
+            </summary>
+            <param name="openSolution"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.GetOpenSolution">
+            <summary>
+            Get the open solution.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.DisplayTextOnStatusBar(System.String)">
+            <summary>
+            Display text on the Visual Studio status bar.
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLGlobalService.RespondToFileChangedEvent(System.Object,ABB.SrcML.FileEventRaisedArgs)">
+            <summary>
+            Respond to the FileChanged event from Solution Monitor.
+            </summary>
+            <param name="sender"></param>
+            <param name="eventArgs"></param>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.SrcMLGlobalService.CurrentMonitor">
+            <summary>
+            SrcML.NET's Solution Monitor.
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.SrcMLGlobalService.CurrentSrcMLArchive">
+            <summary>
+            SrcML.NET's SrcMLArchive.
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.SrcMLServicePackage">
+            <summary>
+            This attribute tells the PkgDef creation utility (CreatePkgDef.exe) that this class is a package.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLServicePackage.srcMLService">
+            <summary>
+            SrcML.NET Service.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLServicePackage.DteEvents">
+            <summary>
+            Events relating to the state of the environment.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLServicePackage.SolutionEvents">
+            <summary>
+            Events for changes to a solution.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLServicePackage.ActivityLog">
+            <summary>
+            Visual Studio's Activity Logger.
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.SrcMLServicePackage.logger">
+            <summary>
+            log4net logger.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.#ctor">
+            <summary>
+            Default constructor of the package.
+            Inside this method you can place any initialization code that does not require 
+            any Visual Studio service because at this point the package object is created but 
+            not sited yet inside Visual Studio environment. The place to do all the other 
+            initialization is the Initialize method.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.CreateService(System.ComponentModel.Design.IServiceContainer,System.Type)">
+            <summary>
+            Step 3: Implement the callback method.
+            This is the function that will create a new instance of the services the first time a client
+            will ask for a specific service type. It is called by the base class's implementation of
+            IServiceProvider.
+            </summary>
+            <param name="container">The IServiceContainer that needs a new instance of the service.
+                                    This must be this package.</param>
+            <param name="serviceType">The type of service to create.</param>
+            <returns>The instance of the service.</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.Initialize">
+            <summary>
+            Initialization of the package; this method is called right after the package is sited, so this is the place
+            where you can put all the initialization code that rely on services provided by VisualStudio.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.SetUpLogger">
+            <summary>
+            Set up log4net logger.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.SetUpActivityLogger">
+            <summary>
+            Set up Visual Studio activity logger.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.SetUpCommand">
+            <summary>
+            Set up command handlers for menu (commands must exist in the .vsct file)
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.MenuItemCallback(System.Object,System.EventArgs)">
+            <summary>
+            This function is the callback used to execute a command when the a menu item is clicked.
+            See the Initialize method to see how the menu item is associated to this function using
+            the OleMenuCommandService service and the MenuCommand class.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.SetUpSrcMLService">
+            <summary>
+            Set up SrcML Service.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.SetUpDTEEvents">
+            <summary>
+            Register Visual Studio DTE events.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.DTEStartupCompleted">
+            <summary>
+            Respond to the Visual Studio DTE event that occurs when the environment has completed initializing.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.RegisterSolutionEvents">
+            <summary>
+            Register solution events.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.SolutionOpened">
+            <summary>
+            Respond to the Visual Studio event that occurs when a solution is being opened.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.RespondToSolutionOpened(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            SrcML service starts to monitor the opened solution.
+            </summary>
+            <param name="sender"></param>
+            <param name="eventArgs"></param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.RespondToSolutionClosing">
+            <summary>
+            Respond to the Visual Studio event that occurs when a solution is about to close.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.DTEBeginShutdown">
+            <summary>
+            Respond to the Visual Studio DTE event that occurs when the development environment is closing.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.SrcMLServicePackage.WriteActivityLog(System.String)">
+            <summary>
+            Write Visual Studio's Activity Log.
+            See %AppData%\Roaming\Microsoft\VisualStudio\11.0Exp\ActivityLog.xml
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.SrcMLServicePackage.ExtensionDirectory">
+            <summary>
+            The directory where this package is installed
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.VsDataService">
+            <summary>
+            The VS Data service responds to file change events from <see cref="T:ABB.SrcML.VisualStudio.VsMonitoringService"/> and keeps <see cref="P:ABB.SrcML.VisualStudio.VsDataService.CurrentWorkingSet"/> up to date.
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsDataService.#ctor(ABB.SrcML.VisualStudio.SrcMLServicePackage,ABB.VisualStudio.ITaskManagerService,ABB.SrcML.VisualStudio.ISrcMLGlobalService,ABB.SrcML.VisualStudio.IWorkingSetRegistrarService)">
+            <summary>
+            Creates a new data service
+            </summary>
+            <param name="serviceProvider">The container where this service is sited</param>
+            <param name="taskManagerService">The task manager</param>
+            <param name="srcMLService">The srcML service</param>
+            <param name="workingSetService">The working set factory service</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsDataService.Save">
+            <summary>
+            Saves the state for this service
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsDataService.Setup">
+            <summary>
+            Sets up the <see cref="P:ABB.SrcML.VisualStudio.VsDataService.CurrentDataArchive"/> and <see cref="P:ABB.SrcML.VisualStudio.VsDataService.CurrentWorkingSet"/> to respond to events from the srcML service
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsDataService.UpdateImpl">
+            <summary>
+            Implementation method for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.Update"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsDataService.StartMonitoringImpl">
+            <summary>
+            Implementation method for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StartMonitoring"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsDataService.StopMonitoringImpl">
+            <summary>
+            Implementation method for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StopMonitoring"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsDataService.OnFileProcessed(ABB.SrcML.FileEventRaisedArgs)">
+            <summary>
+            Raises the <see cref="E:ABB.SrcML.VisualStudio.VsDataService.FileProcessed"/> event
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.VsDataService.FileProcessed">
+            <summary>
+            Raised whenever a file is processed
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.VsDataService.CurrentDataArchive">
+            <summary>
+            The data archive for the current solution
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.VsDataService.CurrentWorkingSet">
+            <summary>
+            The working set for the current solution
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.VsMonitoringService">
+            <summary>
+            Service for monitoring changes to files within the currently open solution
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.VsMonitoringService.DEFAULT_STORAGE_FOLDER">
+            <summary>
+            The directory in the extension folder to store data in for each solution
+            </summary>
+        </member>
+        <member name="F:ABB.SrcML.VisualStudio.VsMonitoringService.RESET_FILE_NAME">
+            <summary>
+            The file name that indicates that the data directory should be deleted
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.#ctor(ABB.SrcML.VisualStudio.SrcMLServicePackage,ABB.VisualStudio.ITaskManagerService)">
+            <summary>
+            Creates a new monitoring service object
+            </summary>
+            <param name="serviceProvider">The container where this service is sited</param>
+            <param name="taskManagerService">The task manager</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.Setup">
+            <summary>
+            Sets up the monitor prior to <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StartMonitoring"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.UpdateImpl">
+            <summary>
+            Implementation method for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.Update"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.OnSourceFileChanged(ABB.SrcML.FileEventRaisedArgs)">
+            <summary>
+            Raises the <see cref="E:ABB.SrcML.VisualStudio.VsMonitoringService.SourceFileChanged"/> event
+            </summary>
+            <param name="e">The file event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.OnDirectoryRemoved(ABB.SrcML.DirectoryScanningMonitorEventArgs)">
+            <summary>
+            Raises the <see cref="E:ABB.SrcML.VisualStudio.VsMonitoringService.DirectoryRemoved"/> event
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.OnDirectoryAdded(ABB.SrcML.DirectoryScanningMonitorEventArgs)">
+            <summary>
+            Raises the <see cref="E:ABB.SrcML.VisualStudio.VsMonitoringService.DirectoryAdded"/> event
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.StartMonitoringImpl">
+            <summary>
+            Implementation for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StartMonitoring"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.StopMonitoringImpl">
+            <summary>
+            Implementation for <see cref="M:ABB.SrcML.VisualStudio.AbstractMonitoringService.StopMonitoring"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.AddDirectoryToMonitor(System.String)">
+            <summary>
+            Adds <paramref name="pathToDirectory"/> to the <see cref="P:ABB.SrcML.VisualStudio.VsMonitoringService.MonitoredDirectories"/> collection
+            </summary>
+            <param name="pathToDirectory">The path to the directory to be added</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.GetXElementForSourceFile(System.String)">
+            <summary>
+            Gets a srcML element for <paramref name="sourceFilePath"/> from <see cref="P:ABB.SrcML.VisualStudio.VsMonitoringService.CurrentSrcMLArchive"/>
+            </summary>
+            <param name="sourceFilePath">The source file path</param>
+            <returns>The XML element for <paramref name="sourceFilePath"/> (null if it is not in the archive)</returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.RemoveDirectoryFromMonitor(System.String)">
+            <summary>
+            Removes <paramref name="pathToDirectory"/> from <see cref="P:ABB.SrcML.VisualStudio.VsMonitoringService.MonitoredDirectories"/>
+            </summary>
+            <param name="pathToDirectory">The path to the directory to be added</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.Reset">
+            <summary>
+            Creates <see cref="F:ABB.SrcML.VisualStudio.VsMonitoringService.RESET_FILE_NAME"/> in the data directory for the open solution. This indicates the directory should be deleted
+            on the next call to <see cref="M:ABB.SrcML.VisualStudio.VsMonitoringService.Setup"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.GetBaseDirectory(EnvDTE.Solution)">
+            <summary>
+            Generate the folder path for storing srcML files. (For all the following four methods.)
+            </summary>
+            <param name="openSolution"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.Save">
+            <summary>
+            Saves the state of <see cref="P:ABB.SrcML.VisualStudio.VsMonitoringService.CurrentMonitor"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.VsMonitoringService.GetOpenSolution">
+            <summary>
+            Get the open solution.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.VsMonitoringService.DirectoryAdded">
+            <summary>
+            Raised when a directory is added via <see cref="M:ABB.SrcML.VisualStudio.VsMonitoringService.AddDirectoryToMonitor(System.String)"/>
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.VsMonitoringService.DirectoryRemoved">
+            <summary>
+            Raised when a directory is removed via <see cref="M:ABB.SrcML.VisualStudio.VsMonitoringService.RemoveDirectoryFromMonitor(System.String)"/>
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.VsMonitoringService.SourceFileChanged">
+            <summary>
+            Raised when the monitor detects a file has changed
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.VsMonitoringService.UpdateArchivesStarted">
+            <summary>
+            Raised when an update starts. This is a wrapper around <see cref="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.UpdateStarted"/> for backwards compatibility
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.VsMonitoringService.UpdateArchivesCompleted">
+            <summary>
+            Raised when an update completes. This is a wrapper around <see cref="E:ABB.SrcML.VisualStudio.AbstractMonitoringService.UpdateCompleted"/> for backwards compatibility
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.VsMonitoringService.CurrentMonitor">
+            <summary>
+            The current monitor object
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.VsMonitoringService.CurrentProject">
+            <summary>
+            the srcML project that wires everything better
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.VsMonitoringService.CurrentSrcMLArchive">
+            <summary>
+            The current srcML archive
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.VsMonitoringService.MonitoredDirectories">
+            <summary>
+            The collection of monitored directories
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.VsMonitoringService.ScanInterval">
+            <summary>
+            The interval at which to scan <see cref="P:ABB.SrcML.VisualStudio.VsMonitoringService.MonitoredDirectories"/>
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.WorkingSetFactoryAddedEventArgs">
+            <summary>
+            Event arguments for an added working set factory
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.WorkingSetFactoryAddedEventArgs.#ctor">
+            <summary>
+            Create a new working set factory added event argument object
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.WorkingSetFactoryAddedEventArgs.#ctor(ABB.SrcML.Data.AbstractWorkingSetFactory)">
+            <summary>
+            Create a new working set factory added event argument object
+            </summary>
+            <param name="addedWorkingSetFactory">The added working set factory</param>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.WorkingSetFactoryAddedEventArgs.WorkingSetFactory">
+            <summary>
+            The working set factory that was added
+            </summary>
+        </member>
+        <member name="T:ABB.SrcML.VisualStudio.WorkingSetRegistrarService">
+            <summary>
+            The working set registrar provides the default implementation of <see cref="T:ABB.SrcML.VisualStudio.IWorkingSetRegistrarService"/>
+            </summary>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.#ctor(System.IServiceProvider)">
+            <summary>
+            Creates a working set registrar object
+            </summary>
+            <param name="serviceProvider">The service provider where this service is sited</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.RegisterWorkingSetFactory(ABB.SrcML.Data.AbstractWorkingSetFactory)">
+            <summary>
+            Registers a new working set object and makes it the default working set
+            </summary>
+            <param name="factory">The working set factory to register</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.OnWorkingSetFactoryAdded(ABB.SrcML.VisualStudio.WorkingSetFactoryAddedEventArgs)">
+            <summary>
+            Raises <see cref="E:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.WorkingSetFactoryAdded"/>
+            </summary>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.WorkingSetFactories_CollectionChanged(System.Object,System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            For each new item in <paramref name="e"/>, <see cref="M:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.OnWorkingSetFactoryAdded(ABB.SrcML.VisualStudio.WorkingSetFactoryAddedEventArgs)"/> is called
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.Default">
+            <summary>
+            The default working set factory
+            </summary>
+        </member>
+        <member name="P:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.WorkingSetFactories">
+            <summary>
+            The registered working set factories
+            </summary>
+        </member>
+        <member name="E:ABB.SrcML.VisualStudio.WorkingSetRegistrarService.WorkingSetFactoryAdded">
+            <summary>
+            Raised when a working set factory is added
+            </summary>
+        </member>
+    </members>
+</doc>
